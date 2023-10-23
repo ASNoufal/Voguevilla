@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             if (ishomescreen) {
               return const HomeScreen();
             } else {
-              Future.delayed(const Duration(seconds: 3), () {
+              Future.delayed(const Duration(seconds: 5), () {
                 navigatetonextpage.value = true;
               });
             }
