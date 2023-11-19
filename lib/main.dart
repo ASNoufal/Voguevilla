@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:voguevilla/firebase_options.dart';
+import 'package:voguevilla/presentation/home/const/const.dart';
 import 'package:voguevilla/presentation/home/homescreen.dart';
 import 'package:voguevilla/presentation/splash/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,9 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: backgroundcolor,
         useMaterial3: true,
       ),
       home: ValueListenableBuilder(
