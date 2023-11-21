@@ -6,12 +6,12 @@ import 'package:voguevilla/presentation/home/homescreenbottomnavigation.dart';
 import 'package:voguevilla/presentation/home/widget/ItemsContainerModel.dart';
 import 'package:voguevilla/presentation/home/widget/widget.dart';
 
-class MenItemsPage extends ConsumerWidget {
-  const MenItemsPage({super.key});
+class JeweleryItemsPage extends ConsumerWidget {
+  const JeweleryItemsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(futureMenapiprovider);
+    final data = ref.watch(futureJeweleryProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -22,7 +22,7 @@ class MenItemsPage extends ConsumerWidget {
         child: Column(
           children: [
             ListTile(
-                title: const Text("Mens Wear",
+                title: const Text("Jewelery",
                     style: TextStyle(color: Colors.black, fontSize: 20)),
                 subtitle: data.maybeWhen(
                     data: (data) => Text("${data.length} products"),
@@ -43,7 +43,7 @@ class MenItemsPage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return ItemContainer(
                     index: index,
-                    provider: futureMenapiprovider,
+                    provider: futureJeweleryProvider,
                   );
                 },
               ),

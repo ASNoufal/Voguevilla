@@ -2,9 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
+import 'package:voguevilla/presentation/home/electronics/electronics.dart';
 import 'package:voguevilla/presentation/home/homescreenbottomnavigation.dart';
 import 'package:voguevilla/presentation/home/Men/menItemsPage.dart';
+import 'package:voguevilla/presentation/home/jewelery/jewelery.dart';
 import 'package:voguevilla/presentation/home/widget/widget.dart';
+import 'package:voguevilla/presentation/home/women/womenItemsPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,28 +18,49 @@ class HomePage extends StatelessWidget {
       children: [
         const SearchBarField(),
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          InkWell(
+          GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (builder) {
-                return MenItemsPage();
+                return const MenItemsPage();
               }));
             },
-            child: CatagoryCircleAvatar(
+            child: const CatagoryCircleAvatar(
               itemname: "Men",
               image: AssetImage("assets/22654-6-man.png"),
             ),
           ),
-          CatagoryCircleAvatar(
-            itemname: "Women",
-            image: AssetImage("assets/23068-1-brunette-file.png"),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return const WomenItemsPage();
+              }));
+            },
+            child: const CatagoryCircleAvatar(
+              itemname: "Women",
+              image: AssetImage("assets/23068-1-brunette-file.png"),
+            ),
           ),
-          CatagoryCircleAvatar(
-            itemname: "jewellery",
-            image: AssetImage("assets/jewellery-png-36045.png"),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return const JeweleryItemsPage();
+              }));
+            },
+            child: const CatagoryCircleAvatar(
+              itemname: "jewellery",
+              image: AssetImage("assets/jewellery-png-36045.png"),
+            ),
           ),
-          CatagoryCircleAvatar(
-            itemname: "electronics",
-            image: AssetImage("assets/electricity.jpeg"),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return const ElectronicsItems();
+              }));
+            },
+            child: const CatagoryCircleAvatar(
+              itemname: "electronics",
+              image: AssetImage("assets/electricity.jpeg"),
+            ),
           )
         ]),
         CarouselSlider(

@@ -18,10 +18,59 @@ class Api implements IauthFacad {
       throw Exception();
     }
   }
+
+  @override
+  Future<List<MensWear>> getWomenWearApi() async {
+    final response = await Dio()
+        .get("https://fakestoreapi.com/products/category/women's%20clothing");
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final data =
+          (response.data as List).map((e) => MensWear.fromJson(e)).toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<MensWear>> getJeweleryApi() async {
+    final response =
+        await Dio().get("https://fakestoreapi.com/products/category/jewelery");
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final data =
+          (response.data as List).map((e) => MensWear.fromJson(e)).toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<MensWear>> getElectronicsApi() async {
+    final responce = await Dio()
+        .get("https://fakestoreapi.com/products/category/electronics");
+
+    if (responce.statusCode == 201 || responce.statusCode == 200) {
+      final data =
+          (responce.data as List).map((e) => MensWear.fromJson(e)).toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
 }
 
 final apiprovider = Provider<Api>((ref) => Api());
 
-final futureapiprovider = FutureProvider<List<MensWear>>((ref) async {
+final futureMenapiprovider = FutureProvider<List<MensWear>>((ref) async {
   return ref.watch(apiprovider).getMensWearApi();
+});
+final futureWomenProvider = FutureProvider<List<MensWear>>((ref) async {
+  return ref.watch(apiprovider).getWomenWearApi();
+});
+final futureJeweleryProvider = FutureProvider<List<MensWear>>((ref) async {
+  return ref.watch(apiprovider).getJeweleryApi();
+});
+final futureElectronicsProvider = FutureProvider<List<MensWear>>((ref) async {
+  return ref.watch(apiprovider).getElectronicsApi();
 });
