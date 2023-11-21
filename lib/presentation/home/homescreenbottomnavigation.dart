@@ -40,7 +40,7 @@ List<Widget>? actions = [
   sizedboxwidth,
   IconButton(
     onPressed: () {
-      Api().getMensWearApi();
+      Api().getMenCarouselApi();
     },
     icon: Icon(
       CupertinoIcons.bell,

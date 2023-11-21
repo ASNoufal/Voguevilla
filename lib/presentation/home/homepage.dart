@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:voguevilla/presentation/home/Carousel/MenCarousel.dart';
+import 'package:voguevilla/presentation/home/Carousel/JeweleryCarousel.dart';
+import 'package:voguevilla/presentation/home/Carousel/laptopCarousel.dart';
+import 'package:voguevilla/presentation/home/Carousel/WomenCarousel.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 import 'package:voguevilla/presentation/home/electronics/electronics.dart';
+import 'package:voguevilla/presentation/home/getallproduct/GetAllProductPage.dart';
 import 'package:voguevilla/presentation/home/homescreenbottomnavigation.dart';
 import 'package:voguevilla/presentation/home/Men/menItemsPage.dart';
 import 'package:voguevilla/presentation/home/jewelery/jewelery.dart';
@@ -65,8 +70,17 @@ class HomePage extends StatelessWidget {
         ]),
         CarouselSlider(
             items: carouseslider
-                .map((e) => ContainerImage(
-                      image: e,
+                .map((e) => GestureDetector(
+                      onTap: () {
+                        int data = carouseslider.indexOf(e);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (builder) {
+                          return carouselOptions[data];
+                        }));
+                      },
+                      child: ContainerImage(
+                        image: e,
+                      ),
                     ))
                 .toList(),
             options: CarouselOptions(
@@ -115,11 +129,18 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: ContainerImage(
-              image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvycWxQeEPYBs9YiXkHxfZqK2aWRfrPVNT1w&usqp=CAU"),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return GetAllProductPage();
+              }));
+            },
+            child: ContainerImage(
+                image:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvycWxQeEPYBs9YiXkHxfZqK2aWRfrPVNT1w&usqp=CAU"),
+          ),
         ),
         sizedboxheight,
         const Center(
@@ -132,3 +153,10 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+List<Widget> carouselOptions = [
+  MenCarousel(),
+  WomenCarousel(),
+  JeweleryCarousel(),
+  LaptopCarousel()
+];

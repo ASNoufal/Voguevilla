@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:voguevilla/domain/CarouselApi/CarouselApi.dart';
 import 'package:voguevilla/domain/mensWear.dart';
 import 'package:voguevilla/infrastucture/Iauthfacad/iauthfacad.dart';
+
+List menswear = [];
 
 class Api implements IauthFacad {
   @override
@@ -58,6 +61,79 @@ class Api implements IauthFacad {
       throw Exception();
     }
   }
+
+  @override
+  Future<List<CarouselApi>> getMenCarouselApi() async {
+    final response =
+        await Dio().get("https://dummyjson.com/products/category/mens-shirts");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      print(data);
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getLaptopCarouselApi() async {
+    final response =
+        await Dio().get("https://dummyjson.com/products/category/laptops");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      print(data);
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getWomenCarouselApi() async {
+    final response = await Dio()
+        .get("https://dummyjson.com/products/category/womens-dresses");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      print(data);
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getJeweleryCarouselApi() async {
+    final response = await Dio()
+        .get("https://dummyjson.com/products/category/womens-jewellery");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      print(data);
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getalldatafromapi() async {
+    final response = await Dio().get("https://dummyjson.com/products/");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
 }
 
 final apiprovider = Provider<Api>((ref) => Api());
@@ -73,4 +149,22 @@ final futureJeweleryProvider = FutureProvider<List<MensWear>>((ref) async {
 });
 final futureElectronicsProvider = FutureProvider<List<MensWear>>((ref) async {
   return ref.watch(apiprovider).getElectronicsApi();
+});
+final futureMenShirtCarouselProvider =
+    FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getMenCarouselApi();
+});
+final futureLaptopCarouselProvider =
+    FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getLaptopCarouselApi();
+});
+final futureWomenShirtCarouselProvider =
+    FutureProvider((ref) => ref.watch(apiprovider).getWomenCarouselApi());
+
+final futureJeweleryCarouselProvider =
+    FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getJeweleryCarouselApi();
+});
+final futureallproductProvider = FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getalldatafromapi();
 });
