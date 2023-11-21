@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 
-Widget appbartitle() {
+Widget appbartitle({Color? color}) {
   return Row(
     children: [
       Text(
         "VougeVilla",
         style: GoogleFonts.courgette(
+          color: color,
           fontSize: 30,
           fontWeight: FontWeight.bold,
         ),
@@ -58,17 +59,17 @@ class CatagoryCircleAvatar extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 40,
-              backgroundColor: Color(0xFF123D56),
+              backgroundColor: const Color(0xFF123D56),
               backgroundImage: image,
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Text(
           itemname,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         )
       ],
     );
@@ -115,13 +116,13 @@ class UnMissableDeals extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Container(
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        unmissableDealsimage[index],
-                      )),
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.red),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      unmissableDealsimage[index],
+                    )),
+                borderRadius: BorderRadius.circular(20),
+              ),
               width: 50,
             ),
           );
