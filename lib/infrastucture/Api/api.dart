@@ -15,7 +15,6 @@ class Api implements IauthFacad {
     if (response.statusCode == 200 || response.statusCode == 201) {
       final data =
           (response.data as List).map((e) => MensWear.fromJson(e)).toList();
-      print(data);
       return data;
     } else {
       throw Exception();
@@ -70,7 +69,6 @@ class Api implements IauthFacad {
       final data = (response.data['products'] as List)
           .map((e) => CarouselApi.fromJson(e))
           .toList();
-      print(data);
       return data;
     } else {
       throw Exception();
@@ -85,7 +83,6 @@ class Api implements IauthFacad {
       final data = (response.data['products'] as List)
           .map((e) => CarouselApi.fromJson(e))
           .toList();
-      print(data);
       return data;
     } else {
       throw Exception();
@@ -100,7 +97,6 @@ class Api implements IauthFacad {
       final data = (response.data['products'] as List)
           .map((e) => CarouselApi.fromJson(e))
           .toList();
-      print(data);
       return data;
     } else {
       throw Exception();
@@ -115,7 +111,6 @@ class Api implements IauthFacad {
       final data = (response.data['products'] as List)
           .map((e) => CarouselApi.fromJson(e))
           .toList();
-      print(data);
       return data;
     } else {
       throw Exception();

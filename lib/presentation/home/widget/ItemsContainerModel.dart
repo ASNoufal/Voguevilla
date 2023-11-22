@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/domain/mensWear.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
+import 'package:voguevilla/presentation/home/widget/itemdetails.dart';
 
 class ItemContainer extends ConsumerWidget {
   final int index;
@@ -17,43 +18,54 @@ class ItemContainer extends ConsumerWidget {
         data: (data) {
           return Column(
             children: [
-              Stack(children: [
-                Container(
-                  height: 190,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(data[index].image))),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        height: 30,
-                        width: 82,
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.green,
-                              size: 15,
-                            ),
-                            Text(
-                              data[index].rating.rate.toString(),
-                              style: TextStyle(
-                                  color: Colors.black, letterSpacing: 1),
-                            ),
-                            Text(
-                              "(${data[index].rating.count})",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => ItemsDetailsPage(
+                                index: index,
+                                provider: provider,
+                              )));
+                },
+                child: Stack(children: [
+                  Container(
+                    height: 190,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(data[index].image))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          height: 30,
+                          width: 82,
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.green,
+                                size: 15,
+                              ),
+                              Text(
+                                data[index].rating.rate.toString(),
+                                style: TextStyle(
+                                    color: Colors.black, letterSpacing: 1),
+                              ),
+                              Text(
+                                "(${data[index].rating.count})",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

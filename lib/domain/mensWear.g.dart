@@ -13,6 +13,8 @@ _$MensWearImpl _$$MensWearImplFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num).toDouble(),
       image: json['image'] as String,
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
+      category: json['category'] as String,
+      description: json['description'] as String,
     );
 
 Map<String, dynamic> _$$MensWearImplToJson(_$MensWearImpl instance) =>
@@ -22,6 +24,8 @@ Map<String, dynamic> _$$MensWearImplToJson(_$MensWearImpl instance) =>
       'price': instance.price,
       'image': instance.image,
       'rating': instance.rating,
+      'category': instance.category,
+      'description': instance.description,
     };
 
 _$RatingImpl _$$RatingImplFromJson(Map<String, dynamic> json) => _$RatingImpl(

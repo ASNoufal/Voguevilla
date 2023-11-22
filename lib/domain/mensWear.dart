@@ -10,6 +10,8 @@ class MensWear with _$MensWear {
     required double price,
     required String image,
     required Rating rating,
+    required String category,
+    required String description,
   }) = _MensWear;
 
   factory MensWear.fromJson(Map<String, dynamic> json) =>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/domain/CarouselApi/CarouselApi.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
+import 'package:voguevilla/presentation/home/widget/itemCarouseldetails.dart';
 
 class ItemsCarousel extends ConsumerWidget {
   final int index;
@@ -18,36 +19,47 @@ class ItemsCarousel extends ConsumerWidget {
           return Column(
             children: [
               Stack(children: [
-                Container(
-                  height: 190,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(data[index].thumbnail))),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        height: 30,
-                        width: 82,
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.star,
-                              color: Colors.green,
-                              size: 15,
-                            ),
-                            Text(
-                              "${data[index].rating}",
-                              style: const TextStyle(
-                                  color: Colors.black, letterSpacing: 1),
-                            ),
-                            Text(
-                              "(${data[index].id * 2})",
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                          ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => ItemsCarouseldetails(
+                                  index: index,
+                                  provider: provider,
+                                )));
+                  },
+                  child: Container(
+                    height: 190,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(data[index].thumbnail))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          height: 30,
+                          width: 82,
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: Colors.green,
+                                size: 15,
+                              ),
+                              Text(
+                                "${data[index].rating}",
+                                style: const TextStyle(
+                                    color: Colors.black, letterSpacing: 1),
+                              ),
+                              Text(
+                                "(${data[index].id * 2})",
+                                style: const TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

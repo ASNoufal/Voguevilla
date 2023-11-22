@@ -25,6 +25,8 @@ mixin _$MensWear {
   double get price => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   Rating get rating => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +39,14 @@ abstract class $MensWearCopyWith<$Res> {
   factory $MensWearCopyWith(MensWear value, $Res Function(MensWear) then) =
       _$MensWearCopyWithImpl<$Res, MensWear>;
   @useResult
-  $Res call({int id, String title, double price, String image, Rating rating});
+  $Res call(
+      {int id,
+      String title,
+      double price,
+      String image,
+      Rating rating,
+      String category,
+      String description});
 
   $RatingCopyWith<$Res> get rating;
 }
@@ -60,6 +69,8 @@ class _$MensWearCopyWithImpl<$Res, $Val extends MensWear>
     Object? price = null,
     Object? image = null,
     Object? rating = null,
+    Object? category = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,6 +93,14 @@ class _$MensWearCopyWithImpl<$Res, $Val extends MensWear>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -102,7 +121,14 @@ abstract class _$$MensWearImplCopyWith<$Res>
       __$$MensWearImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, double price, String image, Rating rating});
+  $Res call(
+      {int id,
+      String title,
+      double price,
+      String image,
+      Rating rating,
+      String category,
+      String description});
 
   @override
   $RatingCopyWith<$Res> get rating;
@@ -124,6 +150,8 @@ class __$$MensWearImplCopyWithImpl<$Res>
     Object? price = null,
     Object? image = null,
     Object? rating = null,
+    Object? category = null,
+    Object? description = null,
   }) {
     return _then(_$MensWearImpl(
       id: null == id
@@ -146,6 +174,14 @@ class __$$MensWearImplCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -158,7 +194,9 @@ class _$MensWearImpl implements _MensWear {
       required this.title,
       required this.price,
       required this.image,
-      required this.rating});
+      required this.rating,
+      required this.category,
+      required this.description});
 
   factory _$MensWearImpl.fromJson(Map<String, dynamic> json) =>
       _$$MensWearImplFromJson(json);
@@ -173,10 +211,14 @@ class _$MensWearImpl implements _MensWear {
   final String image;
   @override
   final Rating rating;
+  @override
+  final String category;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'MensWear(id: $id, title: $title, price: $price, image: $image, rating: $rating)';
+    return 'MensWear(id: $id, title: $title, price: $price, image: $image, rating: $rating, category: $category, description: $description)';
   }
 
   @override
@@ -188,12 +230,17 @@ class _$MensWearImpl implements _MensWear {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.rating, rating) || other.rating == rating));
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, price, image, rating);
+  int get hashCode => Object.hash(
+      runtimeType, id, title, price, image, rating, category, description);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +262,9 @@ abstract class _MensWear implements MensWear {
       required final String title,
       required final double price,
       required final String image,
-      required final Rating rating}) = _$MensWearImpl;
+      required final Rating rating,
+      required final String category,
+      required final String description}) = _$MensWearImpl;
 
   factory _MensWear.fromJson(Map<String, dynamic> json) =
       _$MensWearImpl.fromJson;
@@ -230,6 +279,10 @@ abstract class _MensWear implements MensWear {
   String get image;
   @override
   Rating get rating;
+  @override
+  String get category;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$MensWearImplCopyWith<_$MensWearImpl> get copyWith =>
