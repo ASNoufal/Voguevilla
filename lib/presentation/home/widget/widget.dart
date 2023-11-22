@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:voguevilla/presentation/home/Carousel/laptopCarousel.dart';
+import 'package:voguevilla/presentation/home/Unmissabledeals/Mobile.dart';
+import 'package:voguevilla/presentation/home/Unmissabledeals/Perfume.dart';
+import 'package:voguevilla/presentation/home/Unmissabledeals/SkinCare.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 
 Widget appbartitle({Color? color}) {
@@ -114,22 +118,36 @@ class UnMissableDeals extends StatelessWidget {
         itemBuilder: ((context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      unmissableDealsimage[index],
-                    )),
-                borderRadius: BorderRadius.circular(20),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) => unmissableDealswidget[index]));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        unmissableDealsimage[index],
+                      )),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: 50,
               ),
-              width: 50,
             ),
           );
         }));
   }
 }
 
+List<Widget> unmissableDealswidget = const [
+  MobileUnmissable(),
+  LaptopCarousel(),
+  SkinCareUnmissabledeals(),
+  FraganceUnmissabledeals()
+];
 List<String> unmissableDealsimage = [
   "assets/mobileoffers.jpeg",
   "assets/laptop.jpeg",

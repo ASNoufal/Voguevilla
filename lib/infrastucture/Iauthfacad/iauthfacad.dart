@@ -11,4 +11,7 @@ abstract class IauthFacad {
   Future<List<CarouselApi>> getLaptopCarouselApi();
   Future<List<CarouselApi>> getJeweleryCarouselApi();
   Future<List<CarouselApi>> getalldatafromapi();
+  Future<List<CarouselApi>> getMobileApi();
+  Future<List<CarouselApi>> getfraganceApi();
+  Future<List<CarouselApi>> getSkincareApi();
 }

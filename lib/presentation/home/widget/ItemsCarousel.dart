@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/domain/CarouselApi/CarouselApi.dart';
-import 'package:voguevilla/domain/mensWear.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 
 class ItemsCarousel extends ConsumerWidget {
@@ -34,19 +33,19 @@ class ItemsCarousel extends ConsumerWidget {
                         color: Colors.white,
                         child: Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: Colors.green,
                               size: 15,
                             ),
                             Text(
                               "${data[index].rating}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black, letterSpacing: 1),
                             ),
                             Text(
                               "(${data[index].id * 2})",
-                              style: TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: Colors.grey),
                             ),
                           ],
                         ),
@@ -62,16 +61,16 @@ class ItemsCarousel extends ConsumerWidget {
                   "${data[index].title}",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "₹${data[index].price}",
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.w600),

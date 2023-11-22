@@ -134,9 +134,61 @@ class Api implements IauthFacad {
       throw Exception();
     }
   }
+
+  @override
+  Future<List<CarouselApi>> getMobileApi() async {
+    final response =
+        await Dio().get("https://dummyjson.com/products/category/smartphones");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getfraganceApi() async {
+    final response =
+        await Dio().get("https://dummyjson.com/products/category/fragrances");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<CarouselApi>> getSkincareApi() async {
+    final response =
+        await Dio().get("https://dummyjson.com/products/category/skincare");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final data = (response.data['products'] as List)
+          .map((e) => CarouselApi.fromJson(e))
+          .toList();
+      return data;
+    } else {
+      throw Exception();
+    }
+  }
 }
 
 final apiprovider = Provider<Api>((ref) => Api());
+final futureskincareProvider = FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getSkincareApi();
+});
+final futurefraganceProvider = FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getfraganceApi();
+});
+
+final futureMobileProvider = FutureProvider<List<CarouselApi>>((ref) async {
+  return ref.watch(apiprovider).getMobileApi();
+});
 
 final futureMenapiprovider = FutureProvider<List<MensWear>>((ref) async {
   return ref.watch(apiprovider).getMensWearApi();
