@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/domain/mensWear.dart';
+import 'package:voguevilla/infrastucture/storage/firestore.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 import 'package:voguevilla/presentation/home/homescreenbottomnavigation.dart';
 import 'package:voguevilla/presentation/home/widget/widget.dart';
@@ -19,7 +20,7 @@ class ItemsDetailsPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        actions: actions,
+        actions: getaction(context),
       ),
       body: data.when(
           data: (data) => ListView(
@@ -106,19 +107,33 @@ class ItemsDetailsPage extends ConsumerWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: Container(
-                          width: 200,
-                          height: 65,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: backgroundcolor),
-                          child: const Center(
-                            child: Text(
-                              "Add To Cart",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2),
+                        child: GestureDetector(
+                          onTap: () async {
+                            await FireStoredata().savedatatofirestore(
+                                collection: "Cartitems",
+                                data: {
+                                  "id": data[index].id,
+                                  "title": data[index].title,
+                                  "price": data[index].price,
+                                  "image": data[index].image
+                                }).then((value) => ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                    content: Text("Added to Cart"))));
+                          },
+                          child: Container(
+                            width: 200,
+                            height: 65,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: backgroundcolor),
+                            child: const Center(
+                              child: Text(
+                                "Add To Cart",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2),
+                              ),
                             ),
                           ),
                         ),

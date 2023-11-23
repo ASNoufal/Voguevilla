@@ -27,7 +27,7 @@ class HomeScreenBottomNavigation extends StatelessWidget {
 
     return Scaffold(
         bottomNavigationBar: const BottomNavigationBarClass(),
-        appBar: AppBar(title: appbartitle(), actions: actions),
+        appBar: AppBar(title: appbartitle(), actions: getaction(context)),
         body: ValueListenableBuilder(
             valueListenable: currentvalue,
             builder: (context, newvalue, _) {
@@ -36,26 +36,49 @@ class HomeScreenBottomNavigation extends StatelessWidget {
   }
 }
 
-List<Widget>? actions = [
-  sizedboxwidth,
-  IconButton(
-    onPressed: () {
-      Api().getMenCarouselApi();
-    },
-    icon: Icon(
-      CupertinoIcons.bell,
-      size: 25,
+List<Widget>? getaction(BuildContext context) {
+  return [
+    sizedboxwidth,
+    IconButton(
+      onPressed: () {
+        Api().getMenCarouselApi();
+      },
+      icon: const Icon(
+        CupertinoIcons.bell,
+        size: 25,
+      ),
     ),
-  ),
-  sizedboxwidth,
-  Icon(
-    CupertinoIcons.heart,
-    size: 25,
-  ),
-  sizedboxwidth,
-  Icon(
-    CupertinoIcons.bag,
-    size: 25,
-  ),
-  sizedboxwidth
-];
+    sizedboxwidth,
+    IconButton(
+      onPressed: () {},
+      icon: const Icon(
+        CupertinoIcons.heart,
+        size: 25,
+      ),
+    ),
+    sizedboxwidth,
+    IconButton(
+      onPressed: () {
+        gotocartpage(context);
+      },
+      icon: const Icon(
+        CupertinoIcons.bag,
+        size: 25,
+      ),
+    ),
+    sizedboxwidth
+  ];
+}
+
+void gotocartpage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (builder) => CartPage()));
+}
+
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

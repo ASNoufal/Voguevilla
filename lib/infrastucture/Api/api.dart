@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/domain/CarouselApi/CarouselApi.dart';
 import 'package:voguevilla/domain/mensWear.dart';
-import 'package:voguevilla/infrastucture/Iauthfacad/iauthfacad.dart';
+import 'package:voguevilla/infrastucture/Repo/iauthfacad.dart';
 
 List menswear = [];
 

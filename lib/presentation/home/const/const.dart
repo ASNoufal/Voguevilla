@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const divider = Divider();
 const sizedboxwidth = SizedBox(
-  width: 20,
+  width: 10,
 );
 const sizedboxheight = SizedBox(
   height: 20,

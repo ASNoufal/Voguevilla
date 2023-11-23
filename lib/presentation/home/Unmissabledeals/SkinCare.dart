@@ -15,8 +15,9 @@ class SkinCareUnmissabledeals extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:
-          AppBar(title: appbartitle(color: backgroundcolor), actions: actions),
+      appBar: AppBar(
+          title: appbartitle(color: backgroundcolor),
+          actions: getaction(context)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: Column(
