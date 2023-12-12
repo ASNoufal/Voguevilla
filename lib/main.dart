@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:voguevilla/firebase_options.dart';
+import 'package:voguevilla/presentation/SignupandLogin/Signuppage.dart';
 import 'package:voguevilla/presentation/home/const/const.dart';
 import 'package:voguevilla/presentation/home/homescreenbottomnavigation.dart';
 import 'package:voguevilla/presentation/splash/splashscreen.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
           valueListenable: navigatetonextpage,
           builder: (BuildContext context, bool ishomescreen, _) {
             if (ishomescreen) {
-              return const HomeScreenBottomNavigation();
+              return const SignupPage();
+              // return const HomeScreenBottomNavigation();
             } else {
               Future.delayed(const Duration(seconds: 5), () {
                 navigatetonextpage.value = true;

@@ -45,6 +45,9 @@ dependencies:
   freezed_annotation: ^2.4.1
   dio: ^5.3.3
   cloud_firestore: ^4.13.2
+  connectivity_plus: ^5.0.2
+  firebase_auth: ^4.15.2
+  firebase_database: ^10.3.8
 
 
 dev_dependencies:
